@@ -1,2 +1,2 @@
 # Projeto-Rotas-Rodoviarias
-Projeto desenvolvido na disciplina de Estrutura de Dados
+Projeto da disciplina de Estrutura de Dados
