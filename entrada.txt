@@ -1,0 +1,16 @@
+Passo Fundo	POA	289
+POA	Pelotas	261
+Pelotas	Bage	189
+Bage	Sao Gabriel	268
+Sao Gabriel	Alegrete	204
+Alegrete	Sao Borja	315
+Sao Borja	Santiago	141
+Santiago	Cruz Alta	242
+Cruz Alta	Passo Fundo	149
+Cruz Alta	SM	134
+SM	Santiago	152
+SM	Alegrete	258
+SM	Sao Gabriel	182
+SM	Bage	239
+SM	POA	291
+POA	Bage	377
