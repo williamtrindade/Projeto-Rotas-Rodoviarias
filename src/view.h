@@ -18,7 +18,7 @@ int menu() {
     return op;
 }
 
-Cidade *consultarCidade(Cidade *cidade) {
+Cidade *consultarCidades(Cidade *cidade) {
     Cidade *p;
     printf("NOME\n\n");
     for(p=cidade;p!=NULL;p=p->prox) {

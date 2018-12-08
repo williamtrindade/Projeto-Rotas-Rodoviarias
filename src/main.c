@@ -28,7 +28,7 @@ int main(void) {
                     fflush(stdin);
                     gets(nome);
                 }while(strcmp(nome, "") == 0);
-                cidade = cadastrarCidade(cidade, nome);
+                cidade = cadastrarCidades(cidade, nome);
                 break;
             }
             case 2: {
