@@ -43,3 +43,11 @@ Cidade *inicializa(Cidade *cidade) {
     cidade = cadastrarCidade(cidade, "SM");  
     return cidade;
 }
+
+int verificarCidade(Cidade *cidade, char nome[]) {
+    Cidade *p;
+    for(p=cidade;p!=NULL;p=p->prox) {
+        if (strcmp(p->nome, nome) == 0) return 1; 
+    }
+    return 0;
+}
