@@ -28,7 +28,7 @@ int main(void) {
                     fflush(stdin);
                     gets(nome);
                 }while(strcmp(nome, "") == 0);
-                cidade = cadastrarCidades(cidade, nome);
+                cidade = cadastrarCidade(cidade, nome);
                 break;
             }
             case 2: {
@@ -37,7 +37,7 @@ int main(void) {
             }
             case 3: {
                 printf("\tROTAS > CONSULTAR CIDADE\n");
-                cidade = consultarCidade(cidade);
+                cidade = consultarCidades(cidade);
                 printf("\nDIGITE UM NOME PARA CONSULTAR: \n");
                 char nome[50];
                 do {
