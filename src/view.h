@@ -17,3 +17,12 @@ int menu() {
     scanf("%d", &op);
     return op;
 }
+
+Cidade *consultarCidade(Cidade *cidade) {
+    Cidade *p;
+    printf("NOME\n\n");
+    for(p=cidade;p!=NULL;p=p->prox) {
+        puts(p->nome);
+    }
+    return cidade;
+}

@@ -30,15 +30,6 @@ Cidade *cadastrarCidade(Cidade *cidade, char nome[]) {
     }
 }
 
-Cidade *consultarCidade(Cidade *cidade) {
-    Cidade *p;
-    printf("NOME\n\n");
-    for(p=cidade;p!=NULL;p=p->prox) {
-        puts(p->nome);
-    }
-    return cidade;
-}
-
 Cidade *inicializa(Cidade *cidade) {
     cidade = cadastrarCidade(cidade, "Passo Fundo");
     cidade = cadastrarCidade(cidade, "POA");

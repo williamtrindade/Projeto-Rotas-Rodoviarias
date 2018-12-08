@@ -7,8 +7,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "view.h"
 #include "grafo.h"
+#include "view.h"
 
 int main(void) {
     // Cidade
