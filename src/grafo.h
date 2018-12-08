@@ -13,22 +13,10 @@ typedef struct y {
     struct y *prox;   // proxima aresta
 }Caminho;
 
-void inicializa() {
-    
-}
-
-Cidade *cadastrarCidade(Cidade *cidade) {
-    printf("\tROTAS > CADASTRAR CIDADE\n");
+Cidade *cadastrarCidade(Cidade *cidade, char nome[]) {
     Cidade *novo;
     novo = (Cidade*) malloc(sizeof(Cidade));
-    printf("NOME: \n");
-    // pergunta o nome enquanto o nome for nulo ou vazio
-    do{
-        fflush(stdin);
-        gets(novo->nome);
-        fflush(stdin);
-    }while(novo->nome == "");
-
+    strcpy(novo->nome, nome);
     // percorre a lista de cidade
     if(cidade == NULL) {
         novo->prox = NULL;
@@ -40,5 +28,27 @@ Cidade *cadastrarCidade(Cidade *cidade) {
         novo->prox = NULL;
         return cidade;
     }
-    system("pause");
+}
+
+Cidade *consultarCidade(Cidade *cidade) {
+    Cidade *p;
+    printf("NOME\n\n");
+    for(p=cidade;p!=NULL;p=p->prox) {
+        puts(p->nome);
+    }
+    return cidade;
+}
+
+Cidade *inicializa(Cidade *cidade) {
+    cidade = cadastrarCidade(cidade, "Passo Fundo");
+    cidade = cadastrarCidade(cidade, "POA");
+    cidade = cadastrarCidade(cidade, "Pelotas");
+    cidade = cadastrarCidade(cidade, "Bage");
+    cidade = cadastrarCidade(cidade, "Sao Gabriel");
+    cidade = cadastrarCidade(cidade, "Alegrete");
+    cidade = cadastrarCidade(cidade, "Sao Borja");
+    cidade = cadastrarCidade(cidade, "Santiago");
+    cidade = cadastrarCidade(cidade, "Cruz Alta");
+    cidade = cadastrarCidade(cidade, "SM");  
+    return cidade;
 }
