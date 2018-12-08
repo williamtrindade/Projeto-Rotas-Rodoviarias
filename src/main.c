@@ -38,24 +38,28 @@ int main(void) {
             case 2: {
                 printf("\tROTAS > CADASTRAR CAMINHO\n");
                 printf("\nDIGITE NOME DA ORIGEM : \n");
-                char nome[50];
+                char nomeUm[50], nomeDois[50];
                 do {
                     printf("NOME: ");
                     fflush(stdin);
-                    gets(nome);
-                }while(strcmp(nome, "") == 0);
-                int x = verificarCidade(cidade, nome); // verifica se o nome da cidade existe
+                    gets(nomeUm);
+                }while(strcmp(nomeUm, "") == 0);
+                int x = verificarCidade(cidade, nomeUm); // verifica se o nome da cidade existe
                 if(x == 1) {
                     printf("\nDIGITE NOME DO DESTINO : \n");
-                    char nome[50];
                     do {
                         printf("NOME: ");
                         fflush(stdin);
-                        gets(nome);
-                    }while(strcmp(nome, "") == 0);
-                    int x  = verificarCidade(cidade, nome); // verifica se o nome da cidade existe
+                        gets(nomeDois);
+                    }while(strcmp(nomeDois, "") == 0);
+                    int x  = verificarCidade(cidade, nomeDois); // verifica se o nome da cidade existe
                     if(x == 1){
-                        // duas cidade encontrada
+                        printf("\nDIGITE A DISTANCIA : \n");
+                        int dist;
+                        fflush(stdin);
+                        scanf("%d", &dist);
+                        cadastrarRota(nomeUm, nomeDois, dist, cidade);// duas cidade encontradas
+                        printf("\nROTA CADASTRADA!: \n");
                         system("pause");
                     }else {
                         printf("\nESSA CIDADE NAO EXISTE\n");

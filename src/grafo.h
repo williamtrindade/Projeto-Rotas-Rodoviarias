@@ -51,3 +51,32 @@ int verificarCidade(Cidade *cidade, char nome[]) {
     }
     return 0;
 }
+
+void cadastrarRota(char origem[], char destino[], int distancia, Cidade *cidade) {
+    Caminho *novo;
+    novo = (Caminho*) malloc(sizeof(Caminho));
+
+    Cidade *o, *d;
+    Caminho *c;
+    for(o=cidade;o!=NULL;o=o->prox) { // procura a origem
+        // encontrada a origem
+        if(strcmp(o->nome, origem) == 0) {
+            // encontra o destino
+            for(d=cidade;d!=NULL && (strcmp(d->nome, destino) != 0); d=d->prox);
+            if(o->areste==NULL) {
+                novo->prox = NULL;
+                novo->cidade = d; // coloca o destino na aresta(caminho)
+                novo->distancia = distancia;
+                o->areste = novo; // coloco a nova cidade(destino) na lista de arestas no p(origem)
+            } else {
+                for(c=o->areste;c->prox!=NULL;c=c->prox) {
+                    novo->prox = NULL;
+                    novo->cidade = d; 
+                    novo->distancia = distancia;
+                    c->prox = novo;
+                }
+            }
+            
+        }
+    }
+}
