@@ -116,6 +116,10 @@ int main(void) {
                 }
                 break;
             }
+            case 5: {
+                printf("\tROTAS > REMOVER CAMINHO\n");
+                break;
+            }
             case 9: {
                 return 0;
                 break;

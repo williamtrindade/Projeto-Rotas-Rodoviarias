@@ -6,10 +6,10 @@ int menu() {
     int op;
     printf("\tROTAS\n");
     printf("1 - CADASTRAR CIDADE\n");
-    printf("2 - CADASTRAR ROTA\n");
-    printf("3 - CONSULTAR CIDADE / ROTA\n");
+    printf("2 - CADASTRAR CAMINHO\n");
+    printf("3 - CONSULTAR CIDADE / CAMINHO\n");
     printf("4 - REMOVER CIDADE\n");
-    // printf("5 - ALTERAR CIDADE");
+    printf("5 - REMOVER CAMINHO");
     // printf("6 - VISUALIZAR CIDADE");
     // printf("7 - VISUALIZAR ROTAS");
     // printf("8 - DIJKSTRA");
