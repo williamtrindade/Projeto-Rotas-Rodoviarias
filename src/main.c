@@ -95,6 +95,27 @@ int main(void) {
                 break;
             }
 
+            case 4:{
+                printf("\tROTAS > REMOVER CIDADE\n");
+                cidade = consultarCidades(cidade);
+                char nome[50];
+                do {
+                    printf("\nDIGITE UM NOME PARA REMOVER: \n");
+                    fflush(stdin);
+                    gets(nome);
+                }while(strcmp(nome, "") == 0);
+                Cidade *resultadoBuscaCidade = buscaCidade(cidade, nome);
+
+                if(resultadoBuscaCidade != NULL) {
+                    cidade = removerCidade(cidade, nome);
+                    printf("\nCIDADE REMOVIDA!: \n");
+                    system("pause");
+                }else {
+                    printf("\nCIDADE NAO EXISTE \n");
+                    system("pause");
+                }
+                break;
+            }
             case 9: {
                 return 0;
                 break;

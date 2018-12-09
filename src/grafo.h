@@ -81,16 +81,54 @@ Cidade *cadastrarRotaIniciais(char origem[], char destino[], int distancia, Cida
     cidade = cadastrarRota(destino, origem, distancia, cidade);
 }
 
-Cidade *mostrarRotasCidade(Cidade *cidade) {
-    Caminho *c;
-    printf("\tROTAS > CONSULTAR CIDADE > %s \n", cidade->nome);
-    printf("DESTINOS\n\n");
-        printf("NOME DA CIDADE | DISTANCIA\n\n");
-    for(c=cidade->aresta;c!=NULL;c=c->prox){
-        puts(c->cidade->nome);
-        printf("%d\n\n", c->distancia);
-    }
+// remove as arestas
+Caminho *removerCaminho(Caminho *arestas, char nome[]) {
+    Caminho *cam, *ant;
+    ant = NULL;
+    cam = arestas;
+    while(cam != NULL && strcmp(cam->cidade->nome, nome)!=0){
+		ant = cam;
+		cam = cam->prox;
+	}
+	if(cam == NULL) {
+		return arestas;
+	}
+	if(ant == NULL){
+		arestas = cam->prox;
+	}else{
+		ant->prox = cam->prox;
+	}
+    free(cam);
+    return arestas;
+}
 
-    system("pause");
+// remove da lista de cidades
+Cidade *removerCidade(Cidade *cidade, char nome[]) {
+    Cidade *p;
+    Caminho *k;
+    for(p=cidade;p!=NULL;p=p->prox) {
+        for(k=p->aresta;k!=NULL;k=k->prox){
+            if(strcmp(k->cidade->nome, nome) == 0) {
+                p->aresta = removerCaminho(p->aresta, k->cidade->nome);
+            }
+        }
+    }
+    Cidade *cid, *ant;
+    ant = NULL;
+    cid=cidade;
+    Caminho *cam;
+    while(cid != NULL && strcmp(cid->nome, nome)!=0){
+		ant = cid;
+		cid = cid->prox;
+	}
+	if(cid == NULL) {
+		return cidade;
+	}
+	if(ant == NULL){
+		cidade = cid->prox;
+	}else{
+		ant->prox = cid->prox;
+	}
+	free(cid);
     return cidade;
 }
