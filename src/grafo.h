@@ -132,3 +132,13 @@ Cidade *removerCidade(Cidade *cidade, char nome[]) {
 	free(cid);
     return cidade;
 }
+
+Cidade *removerRota(char origem[], char destino[], Cidade *cidade) {
+    Cidade *o, *d;
+    Caminho *c;
+    o = buscaCidade(cidade, origem);
+    d = buscaCidade(cidade, destino);
+    c=o->aresta;
+    c = removerCaminho(c, d->nome);
+    return cidade;
+}

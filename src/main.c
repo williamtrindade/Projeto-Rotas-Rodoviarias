@@ -118,6 +118,35 @@ int main(void) {
             }
             case 5: {
                 printf("\tROTAS > REMOVER CAMINHO\n");
+                printf("\nDIGITE NOME DA ORIGEM : \n");
+                char nomeUm[50], nomeDois[50];
+                do {
+                    printf("NOME: ");
+                    fflush(stdin);
+                    gets(nomeUm);
+                }while(strcmp(nomeUm, "") == 0);
+                int x = verificarCidade(cidade, nomeUm); // verifica se o nome da cidade existe
+                if(x == 1) {
+                    printf("\nDIGITE NOME DO DESTINO : \n");
+                    do {
+                        printf("NOME: ");
+                        fflush(stdin);
+                        gets(nomeDois);
+                    }while(strcmp(nomeDois, "") == 0);
+                    int x  = verificarCidade(cidade, nomeDois); // verifica se o nome da cidade existe
+                    if(x == 1){
+                        cidade = removerRota(nomeUm, nomeDois, cidade);
+                        cidade = removerRota(nomeDois, nomeUm, cidade);
+                        printf("\nROTA REMOVIDAD!: \n");
+                        system("pause");
+                    }else {
+                        printf("\nESSA CIDADE NAO EXISTE\n");
+                        system("pause");
+                    }
+                }else {
+                    printf("\nESSA CIDADE NAO EXISTE\n");
+                    system("pause");
+                }
                 break;
             }
             case 9: {
