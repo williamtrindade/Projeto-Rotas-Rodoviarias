@@ -149,6 +149,26 @@ int main(void) {
                 }
                 break;
             }
+            case 6: {
+                printf("\tROTAS > ALTERAR CIDADE\n");
+                char nome[50];
+                do {
+                    printf("\nDIGITE NOME DA CIDADE QUE QUER ALTERAR : \n");
+                    fflush(stdin);
+                    gets(nome);
+                }while(strcmp(nome, "") == 0);
+                int x = verificarCidade(cidade, nome); // verifica se o nome da cidade existe
+                if(x == 1) {    
+                    char novoNome[50];
+                    printf("\nDIGITE SEU NOVO NOME : \n");
+                    gets(novoNome);
+                    cidade = alterarCidade(cidade, nome, novoNome);
+                }else {
+                    printf("\nESSA CIDADE NAO EXISTE\n");
+                    system("pause");
+                }
+                break;
+            }
             case 9: {
                 return 0;
                 break;

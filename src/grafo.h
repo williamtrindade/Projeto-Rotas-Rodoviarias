@@ -142,3 +142,10 @@ Cidade *removerRota(char origem[], char destino[], Cidade *cidade) {
     c = removerCaminho(c, d->nome);
     return cidade;
 }
+
+Cidade *alterarCidade( Cidade *cidade, char nome[], char novoNome[]) {
+    Cidade *cid;
+    cid = buscaCidade(cidade, nome);
+    strcpy(cid->nome, novoNome);
+    return cidade;
+}

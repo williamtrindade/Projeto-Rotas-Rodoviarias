@@ -5,12 +5,12 @@ int menu() {
 
     int op;
     printf("\tROTAS\n");
-    printf("1 - CADASTRAR CIDADE\n");
-    printf("2 - CADASTRAR CAMINHO\n");
-    printf("3 - CONSULTAR CIDADE / CAMINHO\n");
-    printf("4 - REMOVER CIDADE\n"); // remove os caminhos tambem
-    printf("5 - REMOVER CAMINHO"); 
-    //  printf("6 - VISUALIZAR CIDADE"); // 
+    printf("1 - CADASTRAR CIDADE\n\n");
+    printf("2 - CADASTRAR CAMINHO\n\n");
+    printf("3 - CONSULTAR CIDADE / CAMINHO\n\n");
+    printf("4 - REMOVER CIDADE\n\n"); // remove os caminhos tambem
+    printf("5 - REMOVER CAMINHO\n\n"); 
+    printf("6 - EDITAR CIDADE\n\n");
     // printf("7 - VISUALIZAR ROTAS");
     // printf("8 - DIJKSTRA");
     printf("9 - SAIR\n");
