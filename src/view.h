@@ -12,7 +12,7 @@ int menu() {
     printf("5 - REMOVER CAMINHO\n\n"); 
     printf("6 - EDITAR CIDADE\n\n");
     printf("7 - EDITAR ROTA\n\n");
-    // printf("8 - DIJKSTRA");
+    printf("8 - VER ROTA\n\n");
     printf("9 - SAIR\n");
     printf("> ");
     scanf("%d", &op);

@@ -8,12 +8,16 @@ typedef struct y {
 }Caminho;
 
 typedef struct x {
+    int visitado;
     char nome[50];
     struct y *aresta; // cidades que ela tem caminho
     struct x *prox;   // proxima cidade
 }Cidade;
 
-
+void mensagem(char msg[50]) {
+    printf("\n%s\n", msg);
+    system("pause");
+}
 
 Cidade *cadastrarCidade(Cidade *cidade, char nome[]) {
     Cidade *novo;
@@ -154,4 +158,26 @@ Cidade *alterarRota(Cidade *cidade, char nomeUm[], char nomeDois[], int distanci
         }
     }
     return cidade;
+}
+
+// busca caminho
+Cidade *buscaCaminho(Cidade *origem, Cidade *destino) { // passa a origem e destino
+    puts(origem->nome); // imprime a origem
+    origem->visitado=1;
+    Caminho *c;
+    if(origem->aresta == NULL || origem == NULL) return NULL; // se a origem for NULL ou nao tiver arestas(caminhos) sai
+    if(origem == destino) return destino; // verifica se achou se sim desempilha
+
+    Caminho *v;
+    for(v=origem->aresta;v!=NULL;v=v->prox) {
+        if(v->cidade->visitado!=1) {
+            origem = buscaCaminho(v->cidade, destino);
+        }
+    }   
+    return origem;
+}
+
+void marcaNaoVisitado(Cidade *cidade) {
+    Cidade *c;
+    for(c=cidade;c!=NULL;c=c->prox) c->visitado = 0;
 }

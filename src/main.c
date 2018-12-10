@@ -31,8 +31,7 @@ int main(void) {
                     gets(nome);
                 }while(strcmp(nome, "") == 0);
                 cidade = cadastrarCidade(cidade, nome);
-                printf("\nCIDADE CADASTRADA COM SUCESSO!: \n");
-                system("pause");
+                mensagem("CIDADE CADASTRADA COM SUCESSO!:");
                 break;
             }
 
@@ -205,6 +204,41 @@ int main(void) {
                         cidade = alterarRota(cidade, nomeDois, nomeUm, dist);
                         printf("\nROTA EDITADA!: \n");
                         system("pause");
+                    }else {
+                        printf("\nESSA CIDADE NAO EXISTE\n");
+                        system("pause");
+                    }
+                }else {
+                    printf("\nESSA CIDADE NAO EXISTE\n");
+                    system("pause");
+                }
+                break;
+            }
+            case 8: {
+                printf("\tROTAS > VER ROTAS ENTRE CIDADES\n");
+                printf("\nDIGITE NOME DA ORIGEM : \n");
+                char nomeUm[50], nomeDois[50];
+                do {
+                    fflush(stdin);
+                    gets(nomeUm);
+                }while(strcmp(nomeUm, "") == 0);
+                int x = verificarCidade(cidade, nomeUm); // verifica se o nome da cidade existe
+                if(x == 1) {
+                    printf("\nDIGITE NOME DO DESTINO : \n");
+                    do {
+                        fflush(stdin);
+                        gets(nomeDois);
+                    }while(strcmp(nomeDois, "") == 0);
+                    int x  = verificarCidade(cidade, nomeDois); // verifica se o nome da cidade existe
+                    if(x == 1){
+                        Cidade *o, *d;
+                        o = buscaCidade(cidade, nomeUm);
+                        d = buscaCidade(cidade, nomeDois);
+                        // busca se ha caminho
+                        o = buscaCaminho(o, d);
+                        if(o!=NULL) mensagem("ROTA ENCONTRADA!");
+                        else  mensagem("NAO EXISTE CAMINHO!");
+                        marcaNaoVisitado(cidade);
                     }else {
                         printf("\nESSA CIDADE NAO EXISTE\n");
                         system("pause");
