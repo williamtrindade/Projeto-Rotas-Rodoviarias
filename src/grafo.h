@@ -86,6 +86,10 @@ Caminho *removerCaminho(Caminho *arestas, char nome[]) {
     Caminho *cam, *ant;
     ant = NULL;
     cam = arestas;
+    if(arestas->prox == NULL) {
+        free(arestas);
+        return NULL;
+    }
     while(cam != NULL && strcmp(cam->cidade->nome, nome)!=0){
 		ant = cam;
 		cam = cam->prox;
@@ -133,19 +137,21 @@ Cidade *removerCidade(Cidade *cidade, char nome[]) {
     return cidade;
 }
 
-Cidade *removerRota(char origem[], char destino[], Cidade *cidade) {
-    Cidade *o, *d;
-    Caminho *c;
-    o = buscaCidade(cidade, origem);
-    d = buscaCidade(cidade, destino);
-    c=o->aresta;
-    c = removerCaminho(c, d->nome);
-    return cidade;
-}
-
-Cidade *alterarCidade( Cidade *cidade, char nome[], char novoNome[]) {
+Cidade *alterarCidade(Cidade *cidade, char nome[], char novoNome[]) {
     Cidade *cid;
     cid = buscaCidade(cidade, nome);
     strcpy(cid->nome, novoNome);
+    return cidade;
+}
+
+Cidade *alterarRota(Cidade *cidade, char nomeUm[], char nomeDois[], int distancia) {
+    Cidade *cid;
+    Caminho *c;
+    cid = buscaCidade(cidade, nomeUm);
+    for(c=cid->aresta;c!=NULL;c=c->prox) {
+        if(strcmp(c->cidade->nome, nomeDois) == 0) {
+            c->distancia = distancia;
+        }
+    }
     return cidade;
 }

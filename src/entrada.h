@@ -11,6 +11,7 @@ Cidade *inicializa(Cidade *cidade) {
     cidade = cadastrarCidade(cidade, "Cruz Alta");
     cidade = cadastrarCidade(cidade, "SM");  
 
+    // chamo essa funcao pois ela inverte os parametros para criar o caminho de ida e volta
     cidade = cadastrarRotaIniciais("Passo Fundo", "POA", 289, cidade);
     cidade = cadastrarRotaIniciais("POA", "Pelotas", 261, cidade);
     cidade = cadastrarRotaIniciais("Pelotas", "Bage", 189, cidade);

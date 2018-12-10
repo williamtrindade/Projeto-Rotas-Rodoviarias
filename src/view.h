@@ -11,7 +11,7 @@ int menu() {
     printf("4 - REMOVER CIDADE\n\n"); // remove os caminhos tambem
     printf("5 - REMOVER CAMINHO\n\n"); 
     printf("6 - EDITAR CIDADE\n\n");
-    // printf("7 - VISUALIZAR ROTAS");
+    printf("7 - EDITAR ROTA\n\n");
     // printf("8 - DIJKSTRA");
     printf("9 - SAIR\n");
     printf("> ");
@@ -32,10 +32,15 @@ Cidade *mostrarRotasCidade(Cidade *cidade) {
     Caminho *c;
     printf("\tROTAS > CONSULTAR CIDADE > %s \n", cidade->nome);
     printf("DESTINOS\n\n");
-        printf("NOME DA CIDADE | DISTANCIA\n\n");
-    for(c=cidade->aresta;c!=NULL;c=c->prox){
-        puts(c->cidade->nome);
-        printf("%d\n\n", c->distancia);
+    printf("NOME DA CIDADE | DISTANCIA\n\n");
+    
+    if(cidade->aresta != NULL) {
+        for(c=cidade->aresta;c!=NULL;c=c->prox){
+            puts(c->cidade->nome);
+            printf("%d\n\n", c->distancia);
+        }
+    }else{
+        printf("NADA PARA MOSTRAR!\n\n");
     }
 
     system("pause");

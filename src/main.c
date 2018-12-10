@@ -31,6 +31,8 @@ int main(void) {
                     gets(nome);
                 }while(strcmp(nome, "") == 0);
                 cidade = cadastrarCidade(cidade, nome);
+                printf("\nCIDADE CADASTRADA COM SUCESSO!: \n");
+                system("pause");
                 break;
             }
 
@@ -121,7 +123,6 @@ int main(void) {
                 printf("\nDIGITE NOME DA ORIGEM : \n");
                 char nomeUm[50], nomeDois[50];
                 do {
-                    printf("NOME: ");
                     fflush(stdin);
                     gets(nomeUm);
                 }while(strcmp(nomeUm, "") == 0);
@@ -129,16 +130,24 @@ int main(void) {
                 if(x == 1) {
                     printf("\nDIGITE NOME DO DESTINO : \n");
                     do {
-                        printf("NOME: ");
                         fflush(stdin);
                         gets(nomeDois);
                     }while(strcmp(nomeDois, "") == 0);
                     int x  = verificarCidade(cidade, nomeDois); // verifica se o nome da cidade existe
                     if(x == 1){
-                        cidade = removerRota(nomeUm, nomeDois, cidade);
-                        cidade = removerRota(nomeDois, nomeUm, cidade);
-                        printf("\nROTA REMOVIDAD!: \n");
-                        system("pause");
+                        Cidade *o, *d;
+                        o = buscaCidade(cidade, nomeUm);
+                        Caminho *arestas;
+                        // verifica se a rota existe
+                        for(arestas=o->aresta;arestas!=NULL;arestas=arestas->prox) {
+                            if(strcmp(arestas->cidade->nome, nomeDois)==0) {
+                                d = buscaCidade(cidade, nomeDois);
+                                o->aresta = removerCaminho(o->aresta, d->nome);
+                                d->aresta = removerCaminho(d->aresta, o->nome);
+                                printf("\nROTA REMOVIDA COM SUCESSO\n");
+                                system("pause");
+                            }
+                        }
                     }else {
                         printf("\nESSA CIDADE NAO EXISTE\n");
                         system("pause");
@@ -163,6 +172,43 @@ int main(void) {
                     printf("\nDIGITE SEU NOVO NOME : \n");
                     gets(novoNome);
                     cidade = alterarCidade(cidade, nome, novoNome);
+                    printf("\nCIDADE EDITADA!: \n");
+                    system("pause");
+                }else {
+                    printf("\nESSA CIDADE NAO EXISTE\n");
+                    system("pause");
+                }
+                break;
+            }
+            case 7: {
+                printf("\tROTAS > ALTERAR ROTA\n");
+                printf("\nDIGITE NOME DA ORIGEM : \n");
+                char nomeUm[50], nomeDois[50];
+                do {
+                    fflush(stdin);
+                    gets(nomeUm);
+                }while(strcmp(nomeUm, "") == 0);
+                int x = verificarCidade(cidade, nomeUm); // verifica se o nome da cidade existe
+                if(x == 1) {
+                    printf("\nDIGITE NOME DO DESTINO : \n");
+                    do {
+                        fflush(stdin);
+                        gets(nomeDois);
+                    }while(strcmp(nomeDois, "") == 0);
+                    int x  = verificarCidade(cidade, nomeDois); // verifica se o nome da cidade existe
+                    if(x == 1){
+                        printf("\nDIGITE A DISTANCIA : \n");
+                        int dist;
+                        fflush(stdin);
+                        scanf("%d", &dist);
+                        cidade = alterarRota(cidade, nomeUm, nomeDois, dist);
+                        cidade = alterarRota(cidade, nomeDois, nomeUm, dist);
+                        printf("\nROTA EDITADA!: \n");
+                        system("pause");
+                    }else {
+                        printf("\nESSA CIDADE NAO EXISTE\n");
+                        system("pause");
+                    }
                 }else {
                     printf("\nESSA CIDADE NAO EXISTE\n");
                     system("pause");
